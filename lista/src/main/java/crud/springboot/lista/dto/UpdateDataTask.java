@@ -11,5 +11,5 @@ public record UpdateDataTask(
         String titulo,
         String descricao,
         Date dataVencimento,
-        Priority priority) {
+        Priority prioridade) {
 }

@@ -5,9 +5,9 @@
 
     import java.util.Date;
 
-    public record ListingDataTask(Long id, String titulo, String descricao, Date dataVencimento, Priority priority){
+    public record ListingDataTask(Long id, String titulo, String descricao, Date dataVencimento, Priority prioridade){
 
         public ListingDataTask(Task task) {
-            this(task.getId(), task.getTitulo(), task.getDescricao(), task.getDataVencimento(), task.getPriority());
+            this(task.getId(), task.getTitulo(), task.getDescricao(), task.getDataVencimento(), task.getPrioridade());
         }
     }

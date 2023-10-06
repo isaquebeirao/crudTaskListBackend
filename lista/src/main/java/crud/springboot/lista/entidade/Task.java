@@ -1,7 +1,7 @@
 package crud.springboot.lista.entidade;
 
-import crud.springboot.lista.dto.UpdateDataTask;
 import crud.springboot.lista.dto.RegistrationDataTask;
+import crud.springboot.lista.dto.UpdateDataTask;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,14 +22,15 @@ public class Task {
     private String descricao;
     private Date dataVencimento;
     @Enumerated(EnumType.STRING)
-    private Priority priority;
+    private Priority prioridade;
     private Boolean ativo = true;
 
     public Task(RegistrationDataTask dados) {
+        this.id = dados.id();
         this.titulo = dados.titulo();
         this.descricao = dados.descricao();
         this.dataVencimento = dados.dataVencimento();
-        this.priority = dados.priority();
+        this.prioridade = dados.prioridade();
         this.ativo = true;
     }
 
@@ -43,8 +44,8 @@ public class Task {
         if (dados.dataVencimento() != null) {
             this.dataVencimento = dados.dataVencimento();
         }
-        if (dados.priority() != null) {
-            this.priority = dados.priority();
+        if (dados.prioridade() != null) {
+            this.prioridade = dados.prioridade();
         }
     }
     public void excluir(){

@@ -7,12 +7,16 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Date;
 
 public record RegistrationDataTask(
-        @NotBlank
+
+        Long id,
+        @NotBlank(message = "{titulo.obrigatorio}")
         String titulo,
-        @NotBlank
+        @NotBlank(message = "{descricao.obrigatorio}")
         String descricao,
-        @NotNull
+        @NotNull(message = "{dataVencimento.obrigatorio}")
         Date dataVencimento,
-        @NotNull
-        Priority priority) {
+        @NotNull(message = "{prioridade.obrigatorio}")
+        Priority prioridade) {
+
+
 }

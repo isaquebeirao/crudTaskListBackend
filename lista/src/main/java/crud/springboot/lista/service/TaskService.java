@@ -1,9 +1,7 @@
 package crud.springboot.lista.service;
 
 import crud.springboot.lista.dto.UpdateDataTask;
-import crud.springboot.lista.dto.RegistrationDataTask;
 import crud.springboot.lista.dto.ListingDataTask;
-import crud.springboot.lista.entidade.Task;
 import crud.springboot.lista.repositorio.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,9 +14,10 @@ public class TaskService {
     @Autowired
     private TaskRepository repository;
 
-    public void salvar(RegistrationDataTask dados) {
-        repository.save(new Task(dados));
-    }
+//    public void salvar(RegistrationDataTask dados) {
+//        var task = new Task(dados);
+//        repository.save(task);
+//    }
 
     public Page<ListingDataTask> listagemProdutos (Pageable paginacao) {
        return repository.findByAtivoTrue(paginacao).map(ListingDataTask::new);
