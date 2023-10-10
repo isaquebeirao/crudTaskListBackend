@@ -31,34 +31,24 @@ public class TaskController {
     @PostMapping
     @Transactional
     public ResponseEntity cadastrarTask (@RequestBody @Valid RegistrationDataTask dados, UriComponentsBuilder uriBuilder) {
-        Task task = new Task(dados);
-        repository.save(task);
-        var uri = uriBuilder.path("/product/{id}").buildAndExpand(task.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DetailedDataTask(task));
-
+        return taskService.cadastrarTask(dados, uriBuilder);
     }
 
     @GetMapping
     public ResponseEntity<Page<ListingDataTask>> listagemTask (@PageableDefault(size = 10, sort = {"titulo"}) Pageable paginacao){
-        var page = taskService.listagemProdutos(paginacao);
-
-        return ResponseEntity.ok(page);
+        return taskService.listarTask(paginacao);
     }
 
     @PutMapping
     @Transactional
     public ResponseEntity atualizar (@RequestBody @Valid UpdateDataTask dados) {
-        var task = repository.getReferenceById(dados.id());
-        task.atualizarInformacoes(dados);
-        return ResponseEntity.ok(new DetailedDataTask(task));
+        return taskService.atualizar(dados);
     }
 
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<Object> excluir (@PathVariable Long id) {
-        taskService.excluir(id);
-
-        return ResponseEntity.noContent().build();
+        return taskService.excluir(id);
     }
 
 }

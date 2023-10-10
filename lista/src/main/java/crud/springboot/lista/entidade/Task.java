@@ -51,4 +51,8 @@ public class Task {
     public void excluir(){
         this.ativo = false;
     }
+
+    public Long getId() {
+        return id;
+    }
 }
