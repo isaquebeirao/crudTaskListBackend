@@ -26,7 +26,6 @@ public class Task {
     private Boolean ativo = true;
 
     public Task(RegistrationDataTask dados) {
-        this.id = dados.id();
         this.titulo = dados.titulo();
         this.descricao = dados.descricao();
         this.dataVencimento = dados.dataVencimento();

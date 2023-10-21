@@ -7,8 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Date;
 
 public record RegistrationDataTask(
-
-        Long id,
         @NotBlank(message = "{titulo.obrigatorio}")
         String titulo,
         @NotBlank(message = "{descricao.obrigatorio}")
