@@ -1,10 +1,8 @@
 package crud.springboot.lista.controller;
 
-import crud.springboot.lista.dto.DetailedDataTask;
 import crud.springboot.lista.dto.UpdateDataTask;
 import crud.springboot.lista.dto.RegistrationDataTask;
 import crud.springboot.lista.dto.ListingDataTask;
-import crud.springboot.lista.entidade.Task;
 import crud.springboot.lista.repositorio.TaskRepository;
 import crud.springboot.lista.service.TaskService;
 import jakarta.transaction.Transactional;
@@ -17,34 +15,32 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-//ARRUMAR O SERVICE, ADICIONAR SPRING SECURITY
-
 @RestController
-@RequestMapping("product")
+@RequestMapping("/todo")
 public class TaskController {
 
     @Autowired
     TaskService taskService;
-    @Autowired
-    TaskRepository repository;
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     @Transactional
     public ResponseEntity cadastrarTask (@RequestBody @Valid RegistrationDataTask dados, UriComponentsBuilder uriBuilder) {
         return taskService.cadastrarTask(dados, uriBuilder);
     }
-
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public ResponseEntity<Page<ListingDataTask>> listagemTask (@PageableDefault(size = 10, sort = {"titulo"}) Pageable paginacao){
         return taskService.listarTask(paginacao);
     }
-
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping
     @Transactional
     public ResponseEntity atualizar (@RequestBody @Valid UpdateDataTask dados) {
         return taskService.atualizar(dados);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<Object> excluir (@PathVariable Long id) {
