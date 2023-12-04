@@ -15,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/todo")
 public class TaskController {
@@ -30,8 +32,8 @@ public class TaskController {
     }
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
-    public ResponseEntity<Page<ListingDataTask>> listagemTask (@PageableDefault(size = 10, sort = {"titulo"}) Pageable paginacao){
-        return taskService.listarTask(paginacao);
+    public ResponseEntity<List<ListingDataTask>> listagemTask (){
+        return taskService.listarTask();
     }
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping

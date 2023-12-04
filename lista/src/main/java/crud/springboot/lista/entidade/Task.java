@@ -1,10 +1,13 @@
 package crud.springboot.lista.entidade;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import crud.springboot.lista.dto.RegistrationDataTask;
 import crud.springboot.lista.dto.UpdateDataTask;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Table(name = "produtos")
@@ -20,10 +23,10 @@ public class Task {
 
     private String titulo;
     private String descricao;
-    private Date dataVencimento;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate dataVencimento;
     @Enumerated(EnumType.STRING)
     private Priority prioridade;
-    private Boolean ativo = true;
 
     public Task(RegistrationDataTask dados) {
         this.id = dados.id();
@@ -31,7 +34,6 @@ public class Task {
         this.descricao = dados.descricao();
         this.dataVencimento = dados.dataVencimento();
         this.prioridade = dados.prioridade();
-        this.ativo = true;
     }
 
     public void atualizarInformacoes (UpdateDataTask dados) {
@@ -47,9 +49,6 @@ public class Task {
         if (dados.prioridade() != null) {
             this.prioridade = dados.prioridade();
         }
-    }
-    public void excluir(){
-        this.ativo = false;
     }
 
     public Long getId() {
