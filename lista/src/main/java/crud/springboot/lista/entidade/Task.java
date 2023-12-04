@@ -29,7 +29,6 @@ public class Task {
     private Priority prioridade;
 
     public Task(RegistrationDataTask dados) {
-        this.id = dados.id();
         this.titulo = dados.titulo();
         this.descricao = dados.descricao();
         this.dataVencimento = dados.dataVencimento();
