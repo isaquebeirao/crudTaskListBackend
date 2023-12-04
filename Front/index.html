@@ -5,47 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./assets/fonts/fonts.css">
+    <script src="./script.js" defer></script>
+
     <title>To Do List</title>
 </head>
 <body>
 
     <h1>To Do List</h1>
-    <div class="content">
+    
+    <div id = "cont" class="content">
         <div class="content-add-item">
             
             <form method="post" class="row g-3" id="form_task">
 
                 <div class="col-md-6">
-                    <input type="text" id="input-titulo-task" placeholder="Titulo" required>
+                    <input type="text" id="titulo" placeholder="Titulo" required>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" id="input-descricao-task" placeholder="Descrição" required>
+                    <input type="text" id="descricao" placeholder="Descrição" required>
                 </div>
                 <div class="col-md-6">
-                    <input type="datetime" id="input-dataVencimento-task" placeholder="Data de Vencimento" required>
+                    <input type="date" id="dataVencimento" placeholder="Data de Vencimento" required>
                 </div>
                 <div class="col-md-6">
-                    <select id="input-prioridade-task" placeholder="Prioridade" required>
+                    <select id="prioridade" placeholder="Prioridade" required>
                         <option value="BAIXA">Baixa</option>
                         <option value="MEDIA">Média</option>
                         <option value="ALTA">Alta</option>
                     </select>
                 </div>
 
+                <button type="submit" id="btn-new-task" title="Clique aqui para adicionar uma nova task">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                    </svg>
+                </button>
             </form>
-            <button onclick="newTask()" id="btn-new-task" title="Clique aqui para adicionar uma nova task">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-                </svg>
-            </button>
-        </div>
-        <div class="content-body">
-            <ul id="to-do-list">
-
-            </ul>
+            <div class="content-body">
+                <ol id="to-do-list">
+                    
+                </ol>
+            </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
     
+
 </body>
-<script src="./script.js"></script>
+
 </html>
